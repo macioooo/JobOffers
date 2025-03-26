@@ -12,7 +12,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <testcontainers.version>1.17.4</testcontainers.version>
+        <testcontainers.version>1.17.6</testcontainers.version>
         <assertj-core.version>3.19.0</assertj-core.version>
     </properties>
     <dependencies>
@@ -27,6 +27,12 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
