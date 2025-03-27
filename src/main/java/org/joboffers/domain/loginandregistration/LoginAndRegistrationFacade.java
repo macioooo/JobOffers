@@ -7,6 +7,7 @@ import org.joboffers.domain.loginandregistration.dto.UserDto;
 
 import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMapper.mapFromUserToRegistrationResultDto;
 import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMessages.USERNAME_ALREADY_TAKEN;
+import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMessages.USER_NOT_FOUND;
 
 @AllArgsConstructor
 public class LoginAndRegistrationFacade {
@@ -16,7 +17,7 @@ public class LoginAndRegistrationFacade {
 
     public UserDto findByUserName(String login) {
         return repository.findByUsername(login).map(user -> new UserDto(user.id(), user.login(), user.password()))
-                .orElseThrow(() -> new UsernameNotFoundException("USER_NOT_FOUND"));
+                .orElseThrow(() -> new UsernameNotFoundException(USER_NOT_FOUND.message));
     }
 
     public RegistrationResultDto register(RegistrationUserDto registrationUserDto) {
