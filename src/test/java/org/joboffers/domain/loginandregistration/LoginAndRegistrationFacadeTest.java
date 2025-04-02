@@ -5,8 +5,7 @@ import org.joboffers.domain.loginandregistration.dto.RegistrationUserDto;
 import org.joboffers.domain.loginandregistration.dto.UserDto;
 import org.junit.jupiter.api.Test;
 
-import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMessages.ACCOUNT_SUCCESSFULLY_CREATED;
-import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMessages.USERNAME_ALREADY_TAKEN;
+import static org.joboffers.domain.loginandregistration.LoginAndRegistrationMessages.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -76,7 +75,7 @@ class LoginAndRegistrationFacadeTest {
         LoginAndRegistrationRepository repository = new InMemoryLoginAndRegistrationRepositoryImpl();
         LoginAndRegistrationFacade facade = new LoginAndRegistrationConfiguration().createForTests(repository);
         //when//then
-        assertThrows(UsernameNotFoundException.class, () -> facade.findByUserName("Test"), "USER_NOT_FOUND");
+        assertThrows(UsernameNotFoundException.class, () -> facade.findByUserName("Test"), USER_NOT_FOUND.message);
 
     }
 }
