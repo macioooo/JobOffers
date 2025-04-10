@@ -70,9 +70,9 @@ class OffersFacadeTest {
                 )).createFacadeForTests();
         List<OfferResponseDto> listOfOffers = facade.fetchAllOffersAndSaveIfNotExists();
         //when
-        OfferResponseDto responseDto = facade.findOfferById(listOfOffers.getFirst().offerId());
+        OfferResponseDto responseDto = facade.findOfferById(listOfOffers.get(0).offerId());
         //then
-        assertEquals(responseDto, listOfOffers.getFirst());
+        assertEquals(responseDto, listOfOffers.get(0));
     }
 
     @Test
