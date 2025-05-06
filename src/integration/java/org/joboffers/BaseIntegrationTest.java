@@ -33,9 +33,12 @@ public class BaseIntegrationTest {
     public MockMvc mockMvc;
     @Autowired
     public ObjectMapper objectMapper;
+    private final static String WIRE_MOCK_HOST = "http://localhost";
 
     @DynamicPropertySource
     public static void propertyOverride(DynamicPropertyRegistry registry) {
         registry.add("spring.data.mongodb.uri", mongoDbContainer::getReplicaSetUrl);
+        registry.add("${joboffers.offers.http.client.config.port}", () -> wireMockServer.getPort());
+        registry.add("${joboffers.offers.http.client.config.uri}", () -> WIRE_MOCK_HOST);
     }
 }

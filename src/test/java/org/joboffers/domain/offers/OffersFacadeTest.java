@@ -29,7 +29,7 @@ class OffersFacadeTest {
     public void should_save_only_2_out_of_4_offers() {
         //given
         OffersFacade facade = new OffersFacadeTestConfiguration(
-                new OffersFetcherTestImpl(
+                new OffersFetchableTestImpl(
                         List.of(
                                 new JobOffersResponse("Junior", "Siii", "1300", "urlone.pl"),
                                 new JobOffersResponse("Mid", "CompanyTwo", "1500", "urltwo.pl"),
@@ -65,7 +65,7 @@ class OffersFacadeTest {
     public void should_return_offer_by_id() {
         //given
         OffersFacade facade = new OffersFacadeTestConfiguration(
-                new OffersFetcherTestImpl(
+                new OffersFetchableTestImpl(
                         List.of(new JobOffersResponse("test", "testest", "123", "testurl.pl"))
                 )).createFacadeForTests();
         List<OfferResponseDto> listOfOffers = facade.fetchAllOffersAndSaveIfNotExists();
@@ -78,7 +78,7 @@ class OffersFacadeTest {
     @Test
     public void should_throw_offer_not_found_exception() {
         //given
-        OffersFacade facade = new OffersFacadeTestConfiguration(new OffersFetcherTestImpl(Collections.emptyList())).createFacadeForTests();
+        OffersFacade facade = new OffersFacadeTestConfiguration(new OffersFetchableTestImpl(Collections.emptyList())).createFacadeForTests();
         //when//then
         assertThrows(OfferNotFoundException.class, () -> facade.findOfferById("1"), OFFER_NOT_FOUND.message);
     }
@@ -86,7 +86,7 @@ class OffersFacadeTest {
     @Test
     public void should_throw_duplicate_key_exception_when_trying_to_save_the_same_url() {
         //given
-        OffersFacade facade = new OffersFacadeTestConfiguration(new OffersFetcherTestImpl(Collections.emptyList())).createFacadeForTests();
+        OffersFacade facade = new OffersFacadeTestConfiguration(new OffersFetchableTestImpl(Collections.emptyList())).createFacadeForTests();
         OfferRequestDto requestDto = OfferRequestDto.builder()
                 .role("test")
                 .salary("111")
