@@ -9,7 +9,7 @@ import static org.joboffers.domain.offers.OfferMapper.mapFromListOfJobOffersResp
 @AllArgsConstructor
 class OffersFetchingService {
     private final OffersRepository repository;
-    private final OffersFetcher fetcher;
+    private final OffersFetchable fetcher;
 
     List<Offer> fetchAllOffersAndSaveWhenNotInDatabase() {
         List<JobOffersResponse> jobOffersResponses = fetcher.fetchOffers();

@@ -6,11 +6,11 @@ import java.util.List;
 
 class OffersFacadeTestConfiguration {
 
-    private final OffersFetcher fetcher;
+    private final OffersFetchable fetcher;
     private final OffersRepository repository;
 
     OffersFacadeTestConfiguration() {
-        this.fetcher = new OffersFetcherTestImpl(
+        this.fetcher = new OffersFetchableTestImpl(
                 List.of(
                         new JobOffersResponse("Java developer", "ABC", "1000", "offerone.pl/offer/1"),
                         new JobOffersResponse("Python developer", "DEF", "3000", "offertwo.pl"),
@@ -23,7 +23,7 @@ class OffersFacadeTestConfiguration {
         this.repository = new InMemoryOfferRepositoryImpl();
     }
 
-    OffersFacadeTestConfiguration(OffersFetcher fetcher) {
+    OffersFacadeTestConfiguration(OffersFetchable fetcher) {
         this.fetcher = fetcher;
         this.repository = new InMemoryOfferRepositoryImpl();
     }

@@ -4,10 +4,10 @@ import org.joboffers.domain.offers.dto.JobOffersResponse;
 
 import java.util.List;
 
-class OffersFetcherTestImpl implements OffersFetcher{
+class OffersFetchableTestImpl implements OffersFetchable {
     List<JobOffersResponse> fetchedOffers;
 
-    OffersFetcherTestImpl(List<JobOffersResponse> fetchedOffers) {
+    OffersFetchableTestImpl(List<JobOffersResponse> fetchedOffers) {
         this.fetchedOffers = fetchedOffers;
     }
 
