@@ -1,4 +1,4 @@
-package org.joboffers.infrastructure.offers;
+package org.joboffers.infrastructure.offers.http;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

@@ -1,0 +1,5 @@
+joboffers:
+  offers:
+    offersRunOccurence: PT1S
+scheduling:
+  enabled: false

@@ -4,6 +4,7 @@ import org.joboffers.domain.offers.dto.JobOffersResponse;
 import org.joboffers.domain.offers.dto.OfferResponseDto;
 import org.joboffers.domain.offers.dto.OfferRequestDto;
 
+import java.util.Collections;
 import java.util.List;
 
 class OfferMapper {
@@ -38,6 +39,9 @@ class OfferMapper {
     }
 
     static List<OfferResponseDto> mapFromListToDtoList(List<Offer> offers) {
+        if (offers == null) {
+            return Collections.emptyList();
+        }
         return offers.stream().map(OfferMapper::mapFromOfferToDto).toList();
     }
 }
