@@ -2,6 +2,7 @@ package org.joboffers.domain.offers;
 
 import lombok.AllArgsConstructor;
 import org.joboffers.domain.offers.dto.JobOffersResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import static org.joboffers.domain.offers.OfferMapper.mapFromListOfJobOffersResponseToOfferList;
@@ -21,7 +22,7 @@ class OffersFetchingService {
 
     private List<JobOffersResponse> filterAllOffersAlreadyInDatabase(List<JobOffersResponse> offers) {
         return offers.stream()
-                .filter(offer -> !repository.checkIfOfferIsAlreadyInDatabaseByUrl(offer.offerUrl()))
+                .filter(offer -> !repository.existsByOfferUrl(offer.offerUrl()))
                 .toList();
     }
 }

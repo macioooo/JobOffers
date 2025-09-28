@@ -1,4 +1,4 @@
-package org.joboffers.infrastructure.offers;
+package org.joboffers.infrastructure.offers.http;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,6 +29,7 @@ public class OffersRestTemplate implements OffersFetchable {
         HttpHeaders headers = new HttpHeaders();
         try {
             final String url = getUrlForService(SERVICE);
+            log.info("Service adress: {}", url);
             final HttpEntity<HttpHeaders> requestEntity = new HttpEntity<>(headers);
             ResponseEntity<List<JobOffersResponse>> response = restTemplate.exchange(
                     url,

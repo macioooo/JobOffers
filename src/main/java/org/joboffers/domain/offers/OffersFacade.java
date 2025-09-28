@@ -16,11 +16,11 @@ public class OffersFacade {
     private final OffersFetchingService offersFetchingService;
 
     public List<OfferResponseDto> findAllOffers() {
-        return mapFromListToDtoList(repository.retrieveAllOffers());
+        return mapFromListToDtoList(repository.findAll());
     }
 
     public OfferResponseDto findOfferById(String offerId) {
-        return repository.retrieveOfferById(offerId)
+        return repository.findOfferByOfferId(offerId)
                 .map(offer -> mapFromOfferToDto(offer))
                 .orElseThrow(() -> new OfferNotFoundException(OFFER_NOT_FOUND.message));
     }
